@@ -1,13 +1,14 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import FilterInputs from './components/FilterInputs/FilterInputs';
+import UserTable from './components/UserTable/UserTable';
 
-function App() {
+
+const App: React.FC = () => {
   return (
-    <div className="App">
-   
+    <div className="app">
+      <UserTable />
     </div>
   );
-}
+};
 
 export default App;

@@ -1,11 +1,14 @@
+// src/components/UserTable.tsx
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import UserTableBody from './UserTableBody';
 import './UserTable.css';
-import { fetchUsers } from '../../store/thunks';
 import { AppDispatch, RootState } from '../../store';
+import { fetchUsers } from '../../store/thunks';
+import { setFilter } from '../../store/usersSlice';
+import { Filters } from '../../types/types';
 import FilterInputs from '../FilterInputs/FilterInputs';
-
 
 const UserTable: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -14,6 +17,10 @@ const UserTable: React.FC = () => {
   useEffect(() => {
     dispatch(fetchUsers());
   }, [dispatch]);
+
+  const handleFilterChange = (field: keyof Filters, value: string) => {
+    dispatch(setFilter({ field, value }));
+  };
 
   const filteredUsers = users.filter(user =>
     user.name.toLowerCase().includes(filters.name.toLowerCase()) &&
@@ -28,7 +35,7 @@ const UserTable: React.FC = () => {
   return (
     <div className="container">
       <h2 className="header">User Management Table</h2>
-      <FilterInputs />
+      <FilterInputs filters={filters} onFilterChange={handleFilterChange} />
       <table className="table">
         <thead>
           <tr>
@@ -38,16 +45,7 @@ const UserTable: React.FC = () => {
             <th>Phone</th>
           </tr>
         </thead>
-        <tbody>
-          {filteredUsers.map(user => (
-            <tr key={user.id}>
-              <td>{user.name}</td>
-              <td>{user.username}</td>
-              <td>{user.email}</td>
-              <td>{user.phone}</td>
-            </tr>
-          ))}
-        </tbody>
+        <UserTableBody users={filteredUsers} />
       </table>
     </div>
   );
