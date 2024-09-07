@@ -1,11 +1,10 @@
-import React from 'react';
-import FilterInputs from './components/FilterInputs/FilterInputs';
-import UserTable from './components/UserTable/UserTable';
-
+import React from "react";
+import UserTable from "./components/UserTable/UserTable";
+import "./App.css";
 
 const App: React.FC = () => {
   return (
-    <div className="app">
+    <div className="app-container">
       <UserTable />
     </div>
   );

@@ -1,28 +1,27 @@
-
 .container {
-    padding: 20px;
-  }
-  
-  .header {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
-  .table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .table th, .table td {
-    padding: 12px;
-    border: 1px solid #ddd;
-  }
-  
-  .loading {
-    color: #007bff;
-  }
-  
-  .error {
-    color: red;
-  }
-  
+  padding: 20px;
+}
+
+.header {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  padding: 12px;
+  border: 1px solid #ddd;
+}
+
+.loading {
+  color: #007bff;
+}
+
+.error {
+  color: red;
+}

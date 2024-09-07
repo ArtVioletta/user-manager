@@ -1,6 +1,5 @@
 import { User } from "../types/types";
 
-
 export interface UsersState {
   users: User[];
   loading: boolean;
@@ -18,9 +17,9 @@ export const initialState: UsersState = {
   loading: false,
   error: null,
   filters: {
-    name: '',
-    username: '',
-    email: '',
-    phone: '',
+    name: "",
+    username: "",
+    email: "",
+    phone: "",
   },
 };

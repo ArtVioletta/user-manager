@@ -1,18 +1,19 @@
-// src/components/UserTable.tsx
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-import UserTableBody from './UserTableBody';
-import './UserTable.css';
-import { AppDispatch, RootState } from '../../store';
-import { fetchUsers } from '../../store/thunks';
-import { setFilter } from '../../store/usersSlice';
-import { Filters } from '../../types/types';
-import FilterInputs from '../FilterInputs/FilterInputs';
+import UserTableBody from "./UserTableBody";
+import "./UserTable.css";
+import { AppDispatch, RootState } from "../../store";
+import { fetchUsers } from "../../store/thunks";
+import { setFilter } from "../../store/usersSlice";
+import { Filters } from "../../types/types";
+import FilterInputs from "../FilterInputs/FilterInputs";
 
-const UserTable: React.FC = () => {
+const UserTable = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const { users, loading, error, filters } = useSelector((state: RootState) => state.users);
+  const { users, loading, error, filters } = useSelector(
+    (state: RootState) => state.users
+  );
 
   useEffect(() => {
     dispatch(fetchUsers());
@@ -22,11 +23,12 @@ const UserTable: React.FC = () => {
     dispatch(setFilter({ field, value }));
   };
 
-  const filteredUsers = users.filter(user =>
-    user.name.toLowerCase().includes(filters.name.toLowerCase()) &&
-    user.username.toLowerCase().includes(filters.username.toLowerCase()) &&
-    user.email.toLowerCase().includes(filters.email.toLowerCase()) &&
-    user.phone.toLowerCase().includes(filters.phone.toLowerCase())
+  const filteredUsers = users.filter(
+    (user) =>
+      user.name.toLowerCase().includes(filters.name.toLowerCase()) &&
+      user.username.toLowerCase().includes(filters.username.toLowerCase()) &&
+      user.email.toLowerCase().includes(filters.email.toLowerCase()) &&
+      user.phone.toLowerCase().includes(filters.phone.toLowerCase())
   );
 
   if (loading) return <p className="loading">Loading...</p>;
