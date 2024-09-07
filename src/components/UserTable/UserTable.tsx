@@ -41,7 +41,7 @@ const UserTable = () => {
       <table className="table">
         <thead>
           <tr>
-            <th>Name</th>
+            <th>Full Name</th>
             <th>Username</th>
             <th>Email</th>
             <th>Phone</th>
